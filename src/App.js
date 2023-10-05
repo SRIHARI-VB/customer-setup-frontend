@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Container from './components/Container';
+import Header from './components/Header';
+import SearchContainer from './components/SearchContainer';
+import Notification from './components/Notification';
+import Info from './components/Info';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+        <Header>
+          <SearchContainer />
+          <Notification />
+        </Header>
+        <Info msg="See how easy it is to setup your facility"/>
+    </Container>
   );
 }
 
