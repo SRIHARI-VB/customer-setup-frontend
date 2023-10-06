@@ -6,7 +6,7 @@ import SearchContainer from './components/HomePage/SearchContainer';
 import Notification from './components/HomePage/Notification';
 import Info from './components/HomePage/InfoText';
 import VideoPlayer from './components/HomePage/VideoPlayer';
-
+import Features from "./components/HomePage/Features"
 
 
 function App() {
@@ -17,14 +17,14 @@ function App() {
           <Notification />
         </Header>
         <Info msg="See how easy it is to setup your facility"/>
-        <div style={{backgroundColor:"black", color:"white", display:"flex", gap:"1.5rem"}}>
-          <div style={{width:"744px", height:"496px"}}>
+        <div style={{display:"flex", justifyContent:"space-between", flexWrap:"wrap"}}>
+          <div style={{width:"744px", height:"496px", borderRadius:"16px", }}>
             <VideoPlayer/>
           </div>
-          <div style={{display:"flex", flexDirection:"column", backgroundColor:"red"}}>
-            <div>Add</div>
-            <div>Dele</div>
-            <div>Mul</div>
+          <div style={{display:"flex", flexDirection:"column"}}>
+            <Features name="Add location" pic="Facility.png"/>
+            <Features name="Add Users" pic="Team.png"/>
+            <Features name="Add ARK wallet" pic="Payment.png"/>
           </div>
         </div>
         
