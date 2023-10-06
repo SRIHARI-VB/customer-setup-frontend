@@ -5,6 +5,7 @@ import Header from './components/Header';
 import SearchContainer from './components/SearchContainer';
 import Notification from './components/Notification';
 import Info from './components/Info';
+import VideoPlay from './components/VideoPlay';
 
 
 
@@ -16,6 +17,7 @@ function App() {
           <Notification />
         </Header>
         <Info msg="See how easy it is to setup your facility"/>
+        <VideoPlay/>
     </Container>
   );
 }
