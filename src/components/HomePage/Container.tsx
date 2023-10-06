@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-    width: 80%;
+    flex:1;
     background-color: #fffae8;
-    margin: 3.5rem 9.75rem 6.25rem 9.75rem;
-    height: 80dvh;
+    margin: 3.5rem auto 6.25rem auto;
 `;
 
 export default Container;
