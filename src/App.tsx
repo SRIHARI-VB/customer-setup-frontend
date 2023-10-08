@@ -31,27 +31,32 @@ const FeaturesWrap = styled.div`
   }
 `;
 
-const VideoWrap = styled.div`
-  border-radius: 20px;
-`;
+const LapViewHeader=styled.div`
+  @media(max-width:768px){
+    display:block;
+
+  }
+`
 
 
 function App() {
   return (
     <Container>
-      {/* <div style={{backgroundColor:"black", width:"100%", height:"48px"}}> */}
-
-      {/* </div> */}
-      <Notification/>
-      <Header>
-        <SearchContainer/>
+      <LapViewHeader>
         
-      </Header>
+        {/* <Notification/> */}
+        <Header>
+          <div style={{display:"flex", width:"2000%"}}>
+          <SearchContainer/>
+          </div>
+          
+          <Notification/>
+        </Header>
+      </LapViewHeader>
+      
       <InfoText msg="See how easy it is to setup your facility"/>
       <VideoFeatureWrap>
-        {/* <VideoWrap> */}
           <VideoPlayer/>
-        {/* </VideoWrap> */}
         
         <FeaturesWrap>
           <Features name="Add Facility" pic="./assets/Facility.png"/>

@@ -3,8 +3,8 @@ import styled from "styled-components"
 
 const Navbar=styled.button` 
     display:flex;
-    width: 100%;
-    height: auto;
+    width: 360px;
+    height: 128px;
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 10px 20px 6px rgba(121, 87, 0, 0.10);
@@ -57,14 +57,14 @@ const Infoarrow=styled.div`
 
     @media(max-width: 768px){
         margin-top:20px;
-    }
+    }+
 
 `
 const Textstyle=styled.p`
     color: #0F1532;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Manrope;
-    font-size: 50px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 700;
     postion: absolute;

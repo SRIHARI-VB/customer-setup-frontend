@@ -1,27 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 const Wrapper = styled.div`
-    width: 5%;
+    width:36px ;
+    height:36px;
     border-radius: 1.25rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    
     background-color: white;
-
+    padding-top:10px;
+    margin-top:5px;
+    justify-content:space-evenly;
     @media (max-width:768px){
         background: none;
-        margin-top:-32px;
-        margin-bottom:28px;
+        margin-top:-45px;
+        // margin-bottom:20px;
+        margin-right:20px;
         width:100%;
-        justify-content:end;
 
     }
-`
+`;
+const Notify = styled.div`
+    backgrond-color:black;
+
+    
+`;
 const Notification = () => {
     return (
         <Wrapper>
-            <img src="./assets/Notification.svg" alt="notification" />
+            <Notify>
+                <img src="./assets/Notification.svg" alt="notification" />
+            </Notify>
+            
         </Wrapper>
     )
 }

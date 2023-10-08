@@ -4,14 +4,14 @@ const InputWrapper = styled.div`
   position:relative;
   box-shadow: 0px 4px 16px 0px rgba(84, 75, 42, 0.20);
   border-radius: 1.25rem;
-  width:88%;
+  width:95%;
   @media (max-width: 768px){
     width: 100%;
   }
 `;
 
 const InputSearchArea = styled.input`
-  width: 100%;
+  width: 1048px;
   background-color : #fff;
   border: none;
   padding: 0 1.25rem;
@@ -21,7 +21,7 @@ const InputSearchArea = styled.input`
   height:3.5rem;
 
   @media (max-width: 768px){
-    width: 90%;
+    width: 100%;
   }
 `;
 
@@ -30,7 +30,7 @@ const InputSearchIcon = styled.span`
   right: 0;
   top: 1rem;
   @media (max-width: 768px){
-    padding-right:1rem;
+    // padding-right:0.5rem;
   }
 `;
 
