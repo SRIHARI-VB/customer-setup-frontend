@@ -2,7 +2,12 @@ import styled from "styled-components"
 
 const InputWrapper = styled.div`
   position:relative;
-  width: 88%;
+  box-shadow: 0px 4px 16px 0px rgba(84, 75, 42, 0.20);
+  border-radius: 1.25rem;
+  width:88%;
+  @media (max-width: 768px){
+    width: 100%;
+  }
 `;
 
 const InputSearchArea = styled.input`
@@ -14,12 +19,19 @@ const InputSearchArea = styled.input`
   font-size: 1rem;
   border-radius: 1.25rem;
   height:3.5rem;
+
+  @media (max-width: 768px){
+    width: 90%;
+  }
 `;
 
 const InputSearchIcon = styled.span`
   position: absolute;
   right: 0;
   top: 1rem;
+  @media (max-width: 768px){
+    padding-right:1rem;
+  }
 `;
 
 

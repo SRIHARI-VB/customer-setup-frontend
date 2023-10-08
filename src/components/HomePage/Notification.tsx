@@ -6,7 +6,17 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff!important;
+    
+    background-color: white;
+
+    @media (max-width:768px){
+        background: none;
+        margin-top:-32px;
+        margin-bottom:28px;
+        width:100%;
+        justify-content:end;
+
+    }
 `
 const Notification = () => {
     return (
