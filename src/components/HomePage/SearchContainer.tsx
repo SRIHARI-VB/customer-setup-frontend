@@ -2,16 +2,20 @@ import styled from "styled-components"
 
 const InputWrapper = styled.div`
   position:relative;
+  background-color: blue;
   box-shadow: 0px 4px 16px 0px rgba(84, 75, 42, 0.20);
   border-radius: 1.25rem;
   width:95%;
-  @media (max-width: 768px){
+  // display:flex;
+  @media (max-width: 973px){
     width: 100%;
+    // justify-self:stretch;
+    
   }
 `;
 
 const InputSearchArea = styled.input`
-  width: 1048px;
+  width: 95%;
   background-color : #fff;
   border: none;
   padding: 0 1.25rem;
@@ -20,16 +24,17 @@ const InputSearchArea = styled.input`
   border-radius: 1.25rem;
   height:3.5rem;
 
-  @media (max-width: 768px){
+  @media (max-width: 973px){
     width: 100%;
   }
 `;
 
 const InputSearchIcon = styled.span`
   position: absolute;
-  right: 0;
+  
+  right: -7rem;
   top: 1rem;
-  @media (max-width: 768px){
+  @media (max-width: 973px){
     // padding-right:0.5rem;
   }
 `;
@@ -41,7 +46,7 @@ const SearchContainer = () => {
           <InputSearchArea type="text" className="inputSearchArea" placeholder='Search'/>
           <div>
             <InputSearchIcon>
-              <img src='./assets/Search.svg' alt='search' />
+              {/* <img src='./assets/Search.svg' alt='search' /> */}
             </InputSearchIcon>
           </div>
         </InputWrapper>

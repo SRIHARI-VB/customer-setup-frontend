@@ -5,7 +5,7 @@ const MsgStyle = styled.p`
     padding: 1rem;
     margin-bottom: 2rem;
 
-    @media(max-width:768px){
+    @media(max-width:973px){
         font-size: 18px;
         color: #0F1532
         font-weight: 500;
