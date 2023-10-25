@@ -92,9 +92,9 @@ function Home(){
         
         
         <FeaturesWrap>
-          <Features name="Add Facility" pic="./assets/Facility.png"/>
-          <Features name="Add Users" pic="./assets/Team.png"/>
-          <Features name="Activate ARK wallet" pic="./assets/Payment.png"/>
+          <Features name="Add Facility" pic="./assets/Facility.png" path="/AddFacilities"/>
+          <Features name="Add Users" pic="./assets/Team.png" path='/'/>
+          <Features name="Activate ARK wallet" pic="./assets/Payment.png" path='/'/>
         </FeaturesWrap>
         
       </VideoFeatureWrap>

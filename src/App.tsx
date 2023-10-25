@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import Home from './components/Home';
-
+import {BrowserRouter,Route,Routes} from 'react-router-dom'
+import AddFacilities from './components/AddFacilities';
 
 
 function App() {
   return (
-    <Home/>
+    <div> 
+       <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path='/AddFacilities' element={<AddFacilities/>}/>
+        </Routes>
+        </BrowserRouter>
+    </div>
   );
 }
 

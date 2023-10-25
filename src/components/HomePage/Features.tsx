@@ -1,4 +1,5 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components"
 
 const Navbar=styled.button` 
@@ -102,9 +103,10 @@ const ArrowSpan = styled.span`
     }
 `
 
-export default function Bar(props: {name:string, pic:string}){
+export default function Bar(props: {name:string, pic:string,path:string}){
+    const navigator=useNavigate();
     return (
-            <Navbar> 
+            <Navbar onClick={()=>navigator(props.path)}> 
                 <Stylecircle>
                     <Png src={props.pic}>
                     </Png>
