@@ -4,6 +4,8 @@ import "@maptiler/sdk/dist/maptiler-sdk.css";
 import SearchContainer from "./HomePage/SearchContainer";
 import Container from "./HomePage/Container";
 import { relative } from "path";
+import CurrentLocation from "./AddFacilities/CurrentLocation";
+import CongratsPopUp from "./AddFacilities/CongratsPopUp";
 
 function AddFacilities() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
@@ -11,7 +13,9 @@ function AddFacilities() {
 //   const [liveLocation, setLiveLocation] = useState<{lng:number, lat:number}>({lng: 0, lat: 0});
   const [zoom] = useState<number>(14);
   const [clickedLocation, setClickedLocation] = useState<string>("");
-
+  const [currenLocation, setCurrentLocation] = useState<boolean>(false);
+  const [confirmAddress, setConfirmAddress] = useState<boolean>(false);
+  const [selectedOption, setSelectedOption] = useState('');
   maptilersdk.config.apiKey = 'DIALvL1pmYZdL29IO9w0';
 
   interface MapOptions {
@@ -75,34 +79,88 @@ function AddFacilities() {
    
 
   }, []);
+  const handleSelectChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    setSelectedOption(event.target.value);
+  };
 
   return (
+    <>
+        <div style={{width:"85%", paddingTop:"24px", paddingBottom:"24px", marginRight:"auto", marginLeft:"auto", display:"flex",alignItems:"center"}}>
+          <img src="./assets/Arrow---Right.png" width={32} height={32}/>
+          <p style={{ fontSize:"24px"}}>
+            Add Facility
+          </p>
+      </div>
     <div style={{
       position: "relative",
       width: "100%",
       height: "100vh"
     }}>
+      
       <div ref={mapContainer} style={{
         position: "absolute",
         width: "100%",
         height: "100vh"
       }} />
-      <div style={{zIndex:1, display:"flex", justifyContent:"center", width:"90%", marginRight:"auto", marginLeft:"auto"}}>
-        <div style={{  zIndex: 1, width:"70%", marginTop:"24px"}}>
-              <SearchContainer/>
-        </div>
-        <div style={{ background: "white",  zIndex: 1, borderRadius:"16px",padding:"24px", width:"20%", marginTop:"24px"}}>
-            <p style={{fontWeight:"600",fontFamily:"Manrope", fontSize:"16px",lineHeight:"1.25rem", letterSpacing:"0.15px", marginBottom:"16px"}}>Current location </p>
-            <p style={{fontWeight:"400",fontFamily:"Manrope", fontSize:"16px",lineHeight:"1.25rem", letterSpacing:"0.15px", fontStyle:"normal"}}>{clickedLocation}</p>
+      
+        <div style={{zIndex:1, display:"flex", justifyContent:"center", width:"90%", marginRight:"auto", marginLeft:"auto"}}>
+          <div style={{  zIndex: 1, width:"70%", marginTop:"24px"}}>
+                <SearchContainer/>
+          </div>
+          <div style={{ background: "white",  zIndex: 1, borderRadius:"16px",padding:"24px", width:"20%", marginTop:"24px"}}>
+            {
+              !currenLocation ? (
+                <>
+                  <CurrentLocation clickedLocation={clickedLocation}/>
 
-            <div style={{width:"100%", textAlign:"center", backgroundColor:"#0B30B2", color:"white", paddingTop:"17px", paddingBottom:"17px", borderRadius:"20px"}}>
-                Use this location
-            </div>
+                  <div onClick={()=>{setCurrentLocation(true)}} style={{width:"100%", textAlign:"center", backgroundColor:"#0B30B2", color:"white", paddingTop:"17px", paddingBottom:"17px", borderRadius:"20px"}}>
+                      Use this location
+                  </div>                
+                
+                </>
+              ):(
+                <>
+                  <fieldset style={{borderRadius:"10px", marginBottom:"40px"}}>
+                    <legend>Facility nickname*</legend>
+                    <input style={{border:"none", outline:"none", }} required type="text"/>
+                  </fieldset>
+                  <fieldset style={{borderRadius:"10px", marginBottom:"40px"}}>
+                    <legend>Unit number/floor</legend>
+                    <input style={{border:"none", outline:"none", }} type="text"/>
+                  </fieldset>
+                  <fieldset style={{ borderRadius: "10px", marginBottom: "40px" }} >
+              <legend >Select an Option</legend>
+              <input type="text" style={{border:"none",outline:"none"}}/>
+              <select value={selectedOption} onChange={handleSelectChange} style={{border:"none", outline:"none"}}>
+                <option value="" style={{paddingLeft:"80"}}></option>
+                <option value="option1">Gym</option>
+                <option value="option2">PArk</option>
+                <option value="option3">School</option>
+              </select>
+            </fieldset>
+                  <CurrentLocation clickedLocation={clickedLocation}/>
+                  <div onClick={()=>{setConfirmAddress(true)}} style={{width:"100%", textAlign:"center", backgroundColor:"#0B30B2", color:"white", paddingTop:"17px", paddingBottom:"17px", borderRadius:"20px"}}>
+                      Confirm address
+                  </div>  
+                </>
+              )
+            }
+            {
+              
+              
+              (confirmAddress&&currenLocation)&&
+                <CongratsPopUp/>
+              
+            }
+              
+          </div>
+
         </div>
-          
-        </div>
-        
+
     </div>
+    
+    </>
+    
   );
 }
 
