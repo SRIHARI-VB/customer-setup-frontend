@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as maptilersdk from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css";
+import SearchContainer from "./HomePage/SearchContainer";
+import Container from "./HomePage/Container";
+import { relative } from "path";
 
 function AddFacilities() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
@@ -84,9 +87,21 @@ function AddFacilities() {
         width: "100%",
         height: "100vh"
       }} />
-      <div style={{ position: "absolute", top: 10, left: 10, background: "white", padding: 10, zIndex: 1 }}>
-        <p>Clicked Location Address: {clickedLocation}</p>
-      </div>
+      <div style={{zIndex:1, display:"flex", justifyContent:"center", width:"90%", marginRight:"auto", marginLeft:"auto"}}>
+        <div style={{  zIndex: 1, width:"70%", marginTop:"24px"}}>
+              <SearchContainer/>
+        </div>
+        <div style={{ background: "white",  zIndex: 1, borderRadius:"16px",padding:"24px", width:"20%", marginTop:"24px"}}>
+            <p style={{fontWeight:"600",fontFamily:"Manrope", fontSize:"16px",lineHeight:"1.25rem", letterSpacing:"0.15px", marginBottom:"16px"}}>Current location </p>
+            <p style={{fontWeight:"400",fontFamily:"Manrope", fontSize:"16px",lineHeight:"1.25rem", letterSpacing:"0.15px", fontStyle:"normal"}}>{clickedLocation}</p>
+
+            <div style={{width:"100%", textAlign:"center", backgroundColor:"#0B30B2", color:"white", paddingTop:"17px", paddingBottom:"17px", borderRadius:"20px"}}>
+                Use this location
+            </div>
+        </div>
+          
+        </div>
+        
     </div>
   );
 }

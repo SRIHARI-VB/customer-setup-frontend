@@ -1,5 +1,8 @@
-import styled from "styled-components"
-
+import styled, { css } from "styled-components"
+interface ButtonProps {
+  primary?: boolean;
+  large?: boolean;
+}
 const InputWrapper = styled.div`
   position:relative;
   background-color: blue;
@@ -12,6 +15,7 @@ const InputWrapper = styled.div`
     // justify-self:stretch;
     
   }
+  
 `;
 
 const InputSearchArea = styled.input`
@@ -40,7 +44,7 @@ const InputSearchIcon = styled.span`
 `;
 
 
-const SearchContainer = () => {
+const SearchContainer = (props:{[key:string]:string}) => {
     return (
         <InputWrapper>
           <InputSearchArea type="text" className="inputSearchArea" placeholder='Search'/>
