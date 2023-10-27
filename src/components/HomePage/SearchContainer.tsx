@@ -5,7 +5,7 @@ interface ButtonProps {
 }
 const InputWrapper = styled.div`
   position:relative;
-  background-color: blue;
+  // background-color: blue;
   box-shadow: 0px 4px 16px 0px rgba(84, 75, 42, 0.20);
   border-radius: 1.25rem;
   width:95%;
@@ -47,7 +47,7 @@ const InputSearchIcon = styled.span`
 const SearchContainer = (props:{[key:string]:string}) => {
     return (
         <InputWrapper>
-          <InputSearchArea type="text" className="inputSearchArea" placeholder='Search'/>
+          <InputSearchArea type="text" className="inputSearchArea" placeholder='Search' />
           <div>
             <InputSearchIcon>
               {/* <img src='./assets/Search.svg' alt='search' /> */}

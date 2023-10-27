@@ -1,9 +1,10 @@
 
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Box = styled.div`
-width: 744px;
-height: 506px;
+width: 50%;
+height: 70%;
 flex-shrink: 0;
 border-radius: 24px;
 display:flex;
@@ -15,15 +16,16 @@ z-index:1;
 position:absolute;
 top:0;
 left:25%;
+
 `;
 
 const InnerBox=styled.div`
 
-width: 744px;
+width: 100%;
 height: 370px;
 border-radius: 24px;
 flex-shrink: 0;
-margin-top:-22px;
+// margin-top:-22px;
 background: var(--extended-yellow-y-200, #FFEDBF);
 position:relative;
 `
@@ -45,23 +47,21 @@ align-items:center;
 `
 const Text=styled.h3`
 color: var(--fonts-n-900, #0F1532);
+width:100%
 text-align: center;
 font-feature-settings: 'clig' off, 'liga' off;
-
-/* H3/Bold */
 font-family: Manrope;
 font-size: 32px;
 font-style: normal;
 font-weight: 700;
-line-height: 40px; /* 125% */`
+line-height: 40px;
+`
 
 
 const FacilityText=styled.p`
 color: var(--fonts-n-800, #292F4D);
 text-align: center;
 font-feature-settings: 'clig' off, 'liga' off;
-
-/* Subtitle 1/Regular */
 font-family: Manrope;
 font-size: 18px;
 font-style: normal;
@@ -107,8 +107,9 @@ line-height: 22px;
 letter-spacing: 0.15px;`
 
 const AddAnother=styled.button`
-margin-top:40px;
+
 display: flex;
+width:30%;
 height: 56px;
 padding: 17px 32px;
 justify-content: center;
@@ -118,9 +119,10 @@ border-radius: 20px;
 border: 1px solid var(--primary-blue, #0B30B2);`
 
 const GoCompany=styled.button`
-margin-top:40px;
+
 display: flex;
 height: 56px;
+width:30%;
 padding: 17px 32px;
 justify-content: center;
 align-items: center;
@@ -131,16 +133,20 @@ background: var(--primary-blue, #0B30B2);`
 const WrapButton=styled.div`
 display:flex;
 justify-content:space-around;
-
+width:100%;
+flex-wrap:wrap;
+margin-top:40px;
+margin-bottom:40px;
 // pading-top:10px;
 // margin-bottom:40px;
 `
 function CongratsPopUp(){
+  const navigator=useNavigate();
   return (
     
    <Box >
     <InnerBox >
-   <Cancel style={{justifyContent:"flex-end", position:"absolute", left:"92%", top:"-15px"}}> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="#fffff">
+   <Cancel onClick={()=>navigator("/")} style={{justifyContent:"flex-end", position:"absolute", left:"92%", top:"-15px"}}> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="#fffff">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M35.0003 20C35.0003 28.2842 28.2846 35 20.0003 35C11.7161 35 5.00033 28.2842 5.00033 20C5.00033 11.7157 11.7161 4.99996 20.0003 4.99996C28.2846 4.99996 35.0003 11.7157 35.0003 20ZM38.3337 20C38.3337 30.1252 30.1255 38.3333 20.0003 38.3333C9.8751 38.3333 1.66699 30.1252 1.66699 20C1.66699 9.87474 9.8751 1.66663 20.0003 1.66663C30.1255 1.66663 38.3337 9.87474 38.3337 20ZM17.0122 14.6548C16.3613 14.0039 15.306 14.0039 14.6551 14.6548C14.0043 15.3057 14.0043 16.3609 14.6551 17.0118L17.6433 20L14.6551 22.9881C14.0043 23.639 14.0043 24.6943 14.6551 25.3451C15.306 25.996 16.3613 25.996 17.0122 25.3451L20.0003 22.357L22.9885 25.3451C23.6394 25.996 24.6946 25.996 25.3455 25.3451C25.9964 24.6943 25.9964 23.639 25.3455 22.9881L22.3573 20L25.3455 17.0118C25.9964 16.3609 25.9964 15.3057 25.3455 14.6548C24.6946 14.0039 23.6394 14.0039 22.9885 14.6548L20.0003 17.6429L17.0122 14.6548Z" fill="black"/>
 </svg></Cancel>
       <Center>
@@ -161,8 +167,8 @@ function CongratsPopUp(){
     </InnerBox>
    <WrapButton >
     
-   <AddAnother>Add another Facilities</AddAnother>
-    <GoCompany>Go TO Company</GoCompany>
+   <AddAnother onClick={()=>navigator("/")}>Add another Facilities</AddAnother>
+    <GoCompany onClick={()=>navigator("/")}>Go TO Company</GoCompany>
    </WrapButton>
    </Box>
   )

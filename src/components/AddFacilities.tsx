@@ -6,7 +6,8 @@ import Container from "./HomePage/Container";
 import { relative } from "path";
 import CurrentLocation from "./AddFacilities/CurrentLocation";
 import CongratsPopUp from "./AddFacilities/CongratsPopUp";
-
+import Searchable from "./AddFacilities/Searchable"
+import { useNavigate } from "react-router-dom";
 function AddFacilities() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<maptilersdk.Map | null>(null);
@@ -74,22 +75,18 @@ function AddFacilities() {
             });
         });
     }
-    
-
-   
-
   }, []);
-  const handleSelectChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-    setSelectedOption(event.target.value);
-  };
+
+  const navigate=useNavigate();
 
   return (
     <>
-        <div style={{width:"85%", paddingTop:"24px", paddingBottom:"24px", marginRight:"auto", marginLeft:"auto", display:"flex",alignItems:"center"}}>
-          <img src="./assets/Arrow---Right.png" width={32} height={32}/>
+        <div style={{width:"85%", paddingTop:"10px", paddingBottom:"10px", marginRight:"auto", marginLeft:"auto", display:"flex",alignItems:"center"}}>
+          <img src="./assets/Arrow---Left.png" width={32} height={32} onClick={()=>navigate("/")}/>
           <p style={{ fontSize:"24px"}}>
             Add Facility
           </p>
+          
       </div>
     <div style={{
       position: "relative",
@@ -128,16 +125,8 @@ function AddFacilities() {
                     <legend>Unit number/floor</legend>
                     <input style={{border:"none", outline:"none", }} type="text"/>
                   </fieldset>
-                  <fieldset style={{ borderRadius: "10px", marginBottom: "40px" }} >
-              <legend >Select an Option</legend>
-              <input type="text" style={{border:"none",outline:"none"}}/>
-              <select value={selectedOption} onChange={handleSelectChange} style={{border:"none", outline:"none"}}>
-                <option value="" style={{paddingLeft:"80"}}></option>
-                <option value="option1">Gym</option>
-                <option value="option2">PArk</option>
-                <option value="option3">School</option>
-              </select>
-            </fieldset>
+                  <div style={{width:"100%"}}><Searchable/></div>
+                  
                   <CurrentLocation clickedLocation={clickedLocation}/>
                   <div onClick={()=>{setConfirmAddress(true)}} style={{width:"100%", textAlign:"center", backgroundColor:"#0B30B2", color:"white", paddingTop:"17px", paddingBottom:"17px", borderRadius:"20px"}}>
                       Confirm address

@@ -61,11 +61,11 @@ const Png=styled.img`
 const Infoarrow=styled.div`
     display:flex;
     flex-direction:row;
-    width: 100%
+    width: 90% !important;
     gap:4px;
-    justify-content:center;
+    justify-content:space-between;
     align-items:center;
-
+    backgroundcolor:red;
 
     @media(max-width: 973px){
         margin-top:20px;
@@ -81,6 +81,8 @@ const Textstyle=styled.p`
     font-weight: 700;
     postion: absolute;
     text-align: left;
+    margin-top:30px;
+    padding-left:32px;
     
     @media(max-width: 973px){
         width:100%;
