@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Select from 'react-select';
 import * as maptilersdk from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import SearchContainer from "./HomePage/SearchContainer";
@@ -6,8 +7,8 @@ import Container from "./HomePage/Container";
 import { relative } from "path";
 import CurrentLocation from "./AddFacilities/CurrentLocation";
 import CongratsPopUp from "./AddFacilities/CongratsPopUp";
-import Searchable from "./AddFacilities/Searchable"
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function AddFacilities() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<maptilersdk.Map | null>(null);
@@ -17,6 +18,17 @@ function AddFacilities() {
   const [currenLocation, setCurrentLocation] = useState<boolean>(false);
   const [confirmAddress, setConfirmAddress] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState('');
+  const [formData, setFormData] = useState({
+    facility_nickname: '',
+    floor_number: '',
+    location: '',
+    service: '',
+    
+    // Add more form fields as needed
+  }); 
+
+  const [customValue, setCustomValue] = useState('');
+
   maptilersdk.config.apiKey = 'DIALvL1pmYZdL29IO9w0';
 
   interface MapOptions {
@@ -77,6 +89,51 @@ function AddFacilities() {
     }
   }, []);
 
+  const handleSelectChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    // Use the value property of the target to set the state
+    const selectedOptionValue = event.target.value;
+    setCustomValue(selectedOptionValue);
+    setSelectedOption(selectedOptionValue);
+
+  };
+
+
+  const handleInputChange = (e:any) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    
+    formData.location = clickedLocation;
+  };
+
+  const handleSubmit = async (e:any) => {
+    e.preventDefault();
+    // Now you have the form data in the formData state variable
+    formData.service = customValue;
+    console.log("Handle Submit Reached");
+    try {
+      const json=JSON.stringify(formData);
+      console.log(json);
+      const response = await axios.post('http://localhost:3001/addfacility', json , {
+        headers: {
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.data) {
+        throw new Error('Network response was not ok');
+      }
+  
+      console.log('Success:', response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    console.log(formData);
+  };
+
   const navigate=useNavigate();
 
   return (
@@ -117,29 +174,43 @@ function AddFacilities() {
                 </>
               ):(
                 <>
-                  <fieldset style={{borderRadius:"10px", marginBottom:"40px"}}>
-                    <legend>Facility nickname*</legend>
-                    <input style={{border:"none", outline:"none", }} required type="text"/>
-                  </fieldset>
-                  <fieldset style={{borderRadius:"10px", marginBottom:"40px"}}>
-                    <legend>Unit number/floor</legend>
-                    <input style={{border:"none", outline:"none", }} type="text"/>
-                  </fieldset>
-                  <div style={{width:"100%"}}><Searchable/></div>
-                  
-                  <CurrentLocation clickedLocation={clickedLocation}/>
-                  <div onClick={()=>{setConfirmAddress(true)}} style={{width:"100%", textAlign:"center", backgroundColor:"#0B30B2", color:"white", paddingTop:"17px", paddingBottom:"17px", borderRadius:"20px"}}>
-                      Confirm address
-                  </div>  
+                  <form action="/addfacility" method="POST" onSubmit={handleSubmit}>
+                    <fieldset style={{borderRadius:"10px", marginBottom:"40px"}}>
+                      <legend>Facility nickname*</legend>
+                      <input id="facility_nickname" name="facility_nickname" value={formData.facility_nickname} onChange={handleInputChange} style={{border:"none", outline:"none", }} required type="text"/>
+                    </fieldset>
+                    <fieldset style={{borderRadius:"10px", marginBottom:"40px"}}>
+                      <legend>Unit number/floor</legend>
+                      <input id="floor_number" name="floor_number" value={formData.floor_number} onChange={handleInputChange} style={{border:"none", outline:"none", }} type="text"/>
+                    </fieldset>
+                    <fieldset style={{ borderRadius: "10px", marginBottom: "40px" }}>
+                      <legend>Select an Option</legend>
+                      <input
+                        id="service"
+                        name="service"
+                        value={selectedOption}
+                        onChange={handleSelectChange}
+                        list="optionsList"
+                        style={{ border: "none", outline: "none" }}
+                      />
+                      <datalist id="optionsList">
+                        <option value="Gym" />
+                        <option value="Park" />
+                        <option value="School" />
+                        {/* Add more options as needed */}
+                      </datalist>
+                    </fieldset>
+                    <CurrentLocation clickedLocation={clickedLocation}/>
+                    <button onClick={()=>{setConfirmAddress(true)}} style={{width:"100%", textAlign:"center", backgroundColor:"#0B30B2", color:"white", paddingTop:"17px", paddingBottom:"17px", borderRadius:"20px"}}>
+                        Confirm address
+                    </button>  
+                  </form>
                 </>
               )
             }
             {
-              
-              
               (confirmAddress&&currenLocation)&&
                 <CongratsPopUp/>
-              
             }
               
           </div>
