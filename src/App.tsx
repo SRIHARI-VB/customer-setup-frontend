@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Home from './components/Home';
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import AddFacilities from './components/AddFacilities';
-import CongratsPopUp from './components/AddFacilities/CongratsPopUp';
 
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path='/addfacility' element={<AddFacilities/>}/>
+          <Route path='/facility' element={<AddFacilities/>}/>
         </Routes>
         </BrowserRouter>
     </div>

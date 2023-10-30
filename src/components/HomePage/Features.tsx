@@ -68,8 +68,8 @@ const Infoarrow=styled.div`
     backgroundcolor:red;
 
     @media(max-width: 973px){
-        margin-top:20px;
-    }+
+        // margin-top:20px;
+    }
 
 `
 const Textstyle=styled.p`
@@ -91,8 +91,8 @@ const Textstyle=styled.p`
         letter-spacing: 0.15px;
         line-spacing: 50px!important;
         padding-top:10px;
-        margin-left: 16px;
-        margin-right: 16px;
+        // margin-left: 16px;
+        // margin-right: 16px;
         line-height:22px;
         
 
@@ -101,7 +101,7 @@ const Textstyle=styled.p`
 const ArrowSpan = styled.span`
     @media(max-width: 973px){
         margin-top: 25px;
-        margin-right: 16px;
+        // margin-right: 16px;
     }
 `
 

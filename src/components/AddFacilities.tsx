@@ -116,7 +116,7 @@ function AddFacilities() {
     try {
       const json=JSON.stringify(formData);
       console.log(json);
-      const response = await axios.post('http://localhost:3001/addfacility', json , {
+      const response = await axios.post('https://2840-106-51-73-226.ngrok-free.app/addfacility', json , {
         headers: {
           'Accept': '*/*',
           'Content-Type': 'application/json',
@@ -205,6 +205,7 @@ function AddFacilities() {
                         Confirm address
                     </button>  
                   </form>
+                  
                 </>
               )
             }
