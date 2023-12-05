@@ -3,12 +3,11 @@ import Select from 'react-select';
 import * as maptilersdk from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import SearchContainer from "./HomePage/SearchContainer";
-import Container from "./HomePage/Container";
-import { relative } from "path";
 import CurrentLocation from "./AddFacilities/CurrentLocation";
 import CongratsPopUp from "./AddFacilities/CongratsPopUp";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../App.css"
 function AddFacilities() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<maptilersdk.Map | null>(null);
@@ -116,7 +115,7 @@ function AddFacilities() {
     try {
       const json=JSON.stringify(formData);
       console.log(json);
-      const response = await axios.post('https://2840-106-51-73-226.ngrok-free.app/addfacility', json , {
+      const response = await axios.post('https://7fbd-106-51-73-226.ngrok-free.app/addfacility', json , {
         headers: {
           'Accept': '*/*',
           'Content-Type': 'application/json',
@@ -157,11 +156,11 @@ function AddFacilities() {
         height: "100vh"
       }} />
       
-        <div style={{zIndex:1, display:"flex", justifyContent:"center", width:"90%", marginRight:"auto", marginLeft:"auto"}}>
-          <div style={{  zIndex: 1, width:"70%", marginTop:"24px"}}>
+        <div className="FacilitySearchWrap" style={{zIndex:1, display:"flex", justifyContent:"center", width:"90%", marginRight:"auto", marginLeft:"auto"}}>
+          <div className="SearchContainer" style={{  zIndex: 1, width:"70%", marginTop:"24px"}}>
                 <SearchContainer/>
           </div>
-          <div style={{ background: "white",  zIndex: 1, borderRadius:"16px",padding:"24px", width:"20%", marginTop:"24px"}}>
+          <div className="FacilityContainer" style={{ background: "white",  zIndex: 1, borderRadius:"16px",padding:"24px", width:"20%", marginTop:"24px"}}>
             {
               !currenLocation ? (
                 <>
@@ -174,24 +173,24 @@ function AddFacilities() {
                 </>
               ):(
                 <>
-                  <form action="/addfacility" method="POST" onSubmit={handleSubmit}>
+                  <form action="/addfacility" method="POST" onSubmit={handleSubmit} className="form">
                     <fieldset style={{borderRadius:"10px", marginBottom:"40px"}}>
                       <legend>Facility nickname*</legend>
-                      <input id="facility_nickname" name="facility_nickname" value={formData.facility_nickname} onChange={handleInputChange} style={{border:"none", outline:"none", }} required type="text"/>
+                      <input id="facility_nickname" name="facility_nickname" value={formData.facility_nickname} onChange={handleInputChange} style={{border:"none", outline:"none",width:"100%",backgroundColor:"white" }} required type="text"/>
                     </fieldset>
                     <fieldset style={{borderRadius:"10px", marginBottom:"40px"}}>
                       <legend>Unit number/floor</legend>
-                      <input id="floor_number" name="floor_number" value={formData.floor_number} onChange={handleInputChange} style={{border:"none", outline:"none", }} type="text"/>
+                      <input id="floor_number" name="floor_number" value={formData.floor_number} onChange={handleInputChange} style={{border:"none", outline:"none",width:"100%",backgroundColor:"white" }} type="text"/>
                     </fieldset>
                     <fieldset style={{ borderRadius: "10px", marginBottom: "40px" }}>
                       <legend>Select an Option</legend>
-                      <input
+                      <input 
                         id="service"
                         name="service"
                         value={selectedOption}
                         onChange={handleSelectChange}
                         list="optionsList"
-                        style={{ border: "none", outline: "none" }}
+                        style={{ border: "none", outline: "none",width:"100%", backgroundColor:"white" }}
                       />
                       <datalist id="optionsList">
                         <option value="Gym" />
