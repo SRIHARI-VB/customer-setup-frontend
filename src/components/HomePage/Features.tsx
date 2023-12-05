@@ -11,8 +11,8 @@ const Navbar=styled.button`
     box-shadow: 0px 10px 20px 6px rgba(121, 87, 0, 0.10);
     position:relative;
     border:none;
-    margin-bottom: 32px;
-    margin-top: 32px;
+    // margin-bottom: 32px;
+    margin-top: 16px;
     
 
     @media(max-width:973px){
@@ -42,9 +42,13 @@ const Stylecircle=styled.div`
     @media(max-width: 973px){
         width: 48px;
         height: 48px;
-        left: 84px;
+        left: 70px;
 
     }
+    // @media (min-width:972px)
+    // {
+    //     left:90px;
+    // }
 `
 const Png=styled.img`
     width:32px;
@@ -55,6 +59,7 @@ const Png=styled.img`
         width:24px;
         height:24px;
         margin-top:14px;
+
 
     }
 `
@@ -90,7 +95,8 @@ const Textstyle=styled.p`
         font-weight:700;
         letter-spacing: 0.15px;
         line-spacing: 50px!important;
-        padding-top:10px;
+        padding-top:8px;
+        padding-left:16px;
         // margin-left: 16px;
         // margin-right: 16px;
         line-height:22px;

@@ -9,6 +9,7 @@ import VideoPlayer from "./HomePage/VideoPlayer";
 
 const VideoFeatureWrap = styled.div`
   display: flex;
+  height:68vh;
 //   background-color: #000;
   gap: 2rem;
   width:100%;
@@ -76,7 +77,7 @@ function Home(){
 
       <div style={{display:'flex', flexDirection:'row', width:"100%", height:"100%", justifyContent:"space-between", gap:"2rem"}}>
           <div style={{backgroundColor:'white', height:'3.5rem',borderRadius:"1.25rem", width:"100%", position:"relative"}}>
-            <input type="text" placeholder='Search' style={{width:"100%", height:"3.5rem", fontSize:"1rem", outline:"none", border:"none", borderRadius:"1.25rem"}} />
+            <input type="text" placeholder='Search' style={{width:"90%", height:"3.5rem", fontSize:"1rem", outline:"none", border:"none", borderRadius:"1.25rem",paddingLeft:"24px"}} />
           </div>
           <div style={{backgroundColor:"white", width:"56px", height:"56px", borderRadius:"20px",display:"flex",alignItems:"center", justifyContent:"center"}}>
             <img width={24} height={24} src="./assets/Notification.svg" alt="notification" />

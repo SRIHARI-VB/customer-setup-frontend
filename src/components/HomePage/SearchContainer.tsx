@@ -19,7 +19,7 @@ const InputWrapper = styled.div`
 `;
 
 const InputSearchArea = styled.input`
-  width: 95%;
+  width: 98%;
   background-color : #fff;
   border: none;
   padding: 0 1.25rem;

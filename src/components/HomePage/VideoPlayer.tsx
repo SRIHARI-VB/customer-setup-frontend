@@ -9,7 +9,7 @@ const PlayerContainer = styled.div`
 
 const VideoPlayer = styled.video`
   width: 100%;
-  height: 100%;
+  height: 90%;
   border-radius: 20px;
   object-fit: fit;
   background-color: #ebebeb;
@@ -17,7 +17,7 @@ const VideoPlayer = styled.video`
 
 const PlayButtonWrapper = styled.div`
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 64px;

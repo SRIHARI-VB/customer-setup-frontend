@@ -8,6 +8,50 @@ import CongratsPopUp from "./AddFacilities/CongratsPopUp";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../App.css"
+import styled from "styled-components";
+
+const SearchContainers=styled.div` z-index: 1;
+  width:50%;
+  margin-top:24px;
+  @media(max-width:972px){
+    display:flex;
+    justify-content:center;
+    margin:0;
+    background-color:red;
+    padding:0px;
+  }
+`
+const FacilityContainer=styled.div`
+  background-color: white;
+  z-index: 1; 
+  border-radius:16px;
+  padding:24px;
+  width:20%;
+  margin-top:24px;
+  // @media(max-width:972px){
+  //   display:flex;
+  //   // flex-wrap:wrap;
+  //   justify-content:center;
+  //   margin-top:100px;
+  //   align-items:center;
+  // }
+`
+const FacilitySearchWrap=styled.div`
+z-index:1;
+ display:flex;
+ justify-content:center; 
+ width:90%; 
+ margin-right:auto;
+ margin-left:auto;
+ @media(max-width:972px){
+  display:flex;
+  flex-wrap:wrap;
+  background-color:black;
+  // justify-content:center;
+  justify-content: flex-end;
+
+ }
+`
 function AddFacilities() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<maptilersdk.Map | null>(null);
@@ -156,11 +200,10 @@ function AddFacilities() {
         height: "100vh"
       }} />
       
-        <div className="FacilitySearchWrap" style={{zIndex:1, display:"flex", justifyContent:"center", width:"90%", marginRight:"auto", marginLeft:"auto"}}>
-          <div className="SearchContainer" style={{  zIndex: 1, width:"70%", marginTop:"24px"}}>
+        <FacilitySearchWrap>
+          <SearchContainers>
                 <SearchContainer/>
-          </div>
-          <div className="FacilityContainer" style={{ background: "white",  zIndex: 1, borderRadius:"16px",padding:"24px", width:"20%", marginTop:"24px"}}>
+         <FacilityContainer>
             {
               !currenLocation ? (
                 <>
@@ -212,10 +255,11 @@ function AddFacilities() {
               (confirmAddress&&currenLocation)&&
                 <CongratsPopUp/>
             }
-              
-          </div>
-
-        </div>
+          </FacilityContainer>
+          
+                
+          </SearchContainers>
+        </FacilitySearchWrap>
 
     </div>
     
