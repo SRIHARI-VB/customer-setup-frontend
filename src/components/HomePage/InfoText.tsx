@@ -6,14 +6,14 @@ const MsgStyle = styled.p`
     margin-bottom: 2rem;
 
     @media(max-width:973px){
-        font-size: 18px;
+        font-size: 14px;
         color: #0F1532
         font-weight: 500;
         font-style: normal;
-        line-height:22px;
         letter-spacing: 0.25px
-        margin-bottom: 1rem;
+        margin: 0;
         text-align: center;
+        padding:0;
     }
 `;
  function InfoText(props: {msg: string}) {

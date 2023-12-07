@@ -9,15 +9,14 @@ import VideoPlayer from "./HomePage/VideoPlayer";
 
 const VideoFeatureWrap = styled.div`
   display: flex;
-  height:68vh;
-//   background-color: #000;
+  height:63vh;
   gap: 2rem;
   width:100%;
   padding: 0;
-  // flex-wrap:wrap;
+
   @media(max-width:973px){
-    gap:44px;
     flex-direction:column;
+    height:50vh;
   }
 
 `;
@@ -28,6 +27,7 @@ const VideoWrap = styled.div`
 //   background-color: red;
   @media(max-width:973px){
     width:100%;
+    margin:0px;
   }
   @media(min-width:973px){
     min-width:600px;
@@ -38,7 +38,6 @@ const FeaturesWrap = styled.div`
 
   display:flex;
   flex-wrap:wrap;
-  
 
   @media(max-width:973px){
     width:100%;

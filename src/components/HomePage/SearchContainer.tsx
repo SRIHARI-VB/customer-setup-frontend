@@ -30,6 +30,7 @@ const InputSearchArea = styled.input`
 
   @media (max-width: 973px){
     width: 100%;
+    height:48px;
   }
 `;
 

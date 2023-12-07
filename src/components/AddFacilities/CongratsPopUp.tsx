@@ -1,30 +1,42 @@
 
+import axios from 'axios';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Box = styled.div`
 width: 50%;
-height: 70%;
+height: 60vh;
 flex-shrink: 0;
 border-radius: 24px;
 display:flex;
 flex-direction:column;
-background: var(--secondary-white, #FFF);
-/* Bottom Sheet Shadow */
+background-color: #fff!important;
 box-shadow: 0px -4px 20px 0px rgba(84, 75, 42, 0.15);
 z-index:1;
 position:absolute;
 top:0;
 left:25%;
+top:15%;
+@media(max-width:972px){
+  height:100%;
+  width:100%;
+  left:0px;
+  top:0px;
+}
 
 `;
 
 const InnerBox=styled.div`
 
 width: 100%;
-height: 370px;
+// height: 370px;
 border-radius: 24px;
 flex-shrink: 0;
+background:#fff;
+// display:flex;
+justify-content:center;
+align-items:center;
 // margin-top:-22px;
 background: var(--extended-yellow-y-200, #FFEDBF);
 position:relative;
@@ -47,7 +59,7 @@ align-items:center;
 `
 const Text=styled.h3`
 color: var(--fonts-n-900, #0F1532);
-width:100%
+width:auto;
 text-align: center;
 font-feature-settings: 'clig' off, 'liga' off;
 font-family: Manrope;
@@ -58,7 +70,7 @@ line-height: 40px;
 `
 
 
-const FacilityText=styled.p`
+const FacilityText=styled.pre`
 color: var(--fonts-n-800, #292F4D);
 text-align: center;
 font-feature-settings: 'clig' off, 'liga' off;
@@ -116,7 +128,11 @@ justify-content: center;
 align-items: center;
 gap: 8px;
 border-radius: 20px;
-border: 1px solid var(--primary-blue, #0B30B2);`
+border: 1px solid var(--primary-blue, #0B30B2);
+@media(max-width:972px){
+  width:80%;
+}
+`
 
 const GoCompany=styled.button`
 
@@ -128,7 +144,10 @@ justify-content: center;
 align-items: center;
 gap: 8px;
 border-radius: 20px;
-background: var(--primary-blue, #0B30B2);`
+background: var(--primary-blue, #0B30B2);
+@media(max-width:972px){
+  width:80%;
+}`
 
 const WrapButton=styled.div`
 display:flex;
@@ -137,11 +156,40 @@ width:100%;
 flex-wrap:wrap;
 margin-top:40px;
 margin-bottom:40px;
+background-color:#fff;
 // pading-top:10px;
 // margin-bottom:40px;
+@media(max-width:972px){
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  // background-color:black;
+  align-items:center;
+  margin:16pxpx;
+  width:100%;
+  height:100%;
+}
 `
-function CongratsPopUp(){
+function CongratsPopUp(props:{facilityNickName:string}){
   const navigator=useNavigate();
+  useEffect(()=>{
+    const fetchData=async()=>{
+      try{
+        const response=await axios.get("https://e14b-122-186-163-190.ngrok-free.app/addfacility", {
+          headers: {
+            'Accept': '*/*'
+          },
+        });
+        const data=response.data;
+        console.log("fetched: ",data);
+
+      }catch(error){
+        console.log(error);
+      }
+    }
+    fetchData();
+    return ()=>{};
+  },[]);
   return (
     
    <Box >
@@ -161,7 +209,7 @@ function CongratsPopUp(){
   <path d="M28.4376 27.9491L28.5433 28.587C28.8453 26.0979 30.8698 24.1672 33.3709 23.9892C30.8698 23.8112 28.8453 21.8805 28.5433 19.3914L28.4376 20.0292C28.0816 22.1774 26.3116 23.809 24.1416 23.9892C26.3116 24.1694 28.0816 25.801 28.4376 27.9491Z" fill="#FFD058" stroke="#FFD058" stroke-linejoin="round"/>
 </svg>
      <Text>Congratulations!</Text>
-     <FacilityText>Your facility StayFit Downtown has been added!</FacilityText>
+     <FacilityText>Your facility <FacilityInner>{props.facilityNickName}</FacilityInner> has been added!</FacilityText>
      <CompanyText> You can find in under ‘My company’</CompanyText>
       </Center>
     </InnerBox>

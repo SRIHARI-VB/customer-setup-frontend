@@ -5,6 +5,9 @@ const PlayerContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  @media(max-width:972px){
+    margin:0px;
+  }
 `;
 
 const VideoPlayer = styled.video`

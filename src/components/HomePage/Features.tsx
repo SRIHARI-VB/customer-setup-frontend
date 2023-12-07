@@ -12,14 +12,14 @@ const Navbar=styled.button`
     position:relative;
     border:none;
     // margin-bottom: 32px;
-    margin-top: 16px;
+    // margin-top: 16px;
     
 
     @media(max-width:973px){
         width:46%;
         height: auto;
-        margin-bottom: 28px;
-        margin-top: 28px;
+        margin-bottom: 0px;
+        margin-top: 0px;
     }
 
     @media(min-width: 973px){
@@ -95,10 +95,10 @@ const Textstyle=styled.p`
         font-weight:700;
         letter-spacing: 0.15px;
         line-spacing: 50px!important;
-        padding-top:8px;
+        padding-top:5px;
         padding-left:16px;
-        // margin-left: 16px;
-        // margin-right: 16px;
+        // margin-left:16px;
+        margin-bottom:16px;
         line-height:22px;
         
 

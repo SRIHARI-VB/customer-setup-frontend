@@ -10,15 +10,33 @@ import axios from "axios";
 import "../App.css"
 import styled from "styled-components";
 
-const SearchContainers=styled.div` z-index: 1;
+const Navbar=styled.div`
+width:88.5%;
+padding-top:10px;
+padding-bottom:10px;
+// margin-right:auto;
+// margin-left:auto;
+display:flex;
+align-items:center;
+background-color:#fff;
+z-index:1;
+position:absolute;
+padding-left:11.5%;
+@media(max-width:972px){
+  height:30px;
+  padding-left:10%;
+  // background-color:black;
+  // z-index:-1;
+}
+`
+const SearchContainers=styled.div` 
+ z-index: 1;
   width:50%;
   margin-top:24px;
   @media(max-width:972px){
-    display:flex;
-    justify-content:center;
-    margin:0;
-    background-color:red;
-    padding:0px;
+    width:65%;
+    margin-right:70px;
+    margin-top:5px;
   }
 `
 const FacilityContainer=styled.div`
@@ -28,29 +46,31 @@ const FacilityContainer=styled.div`
   padding:24px;
   width:20%;
   margin-top:24px;
-  // @media(max-width:972px){
-  //   display:flex;
-  //   // flex-wrap:wrap;
-  //   justify-content:center;
-  //   margin-top:100px;
-  //   align-items:center;
-  // }
+  @media(max-width:972px){
+    width:90%;
+    border-radius: 20px 20px 0px 0px;
+    // margin-bottom:20px;
+  }
 `
 const FacilitySearchWrap=styled.div`
 z-index:1;
  display:flex;
+ gap:24px;
  justify-content:center; 
  width:90%; 
  margin-right:auto;
  margin-left:auto;
+ position:absolute;
+ top:10%;
  @media(max-width:972px){
-  display:flex;
-  flex-wrap:wrap;
-  background-color:black;
-  // justify-content:center;
-  justify-content: flex-end;
-
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  flex-direction:flex-end;
+  height:93vh;
+  width:100%;
  }
+ 
 `
 function AddFacilities() {
   const mapContainer = useRef<HTMLDivElement | null>(null);
@@ -107,8 +127,8 @@ function AddFacilities() {
   useEffect(() => {
     
     if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            if (map.current) return; // stops map from initializing more than once
+        navigator.geolocation.getCurrentPosition((position) => {  
+          if (map.current) return; // stops map from initializing more than once
 
             const options: MapOptions = {
               container: mapContainer.current!,
@@ -159,7 +179,7 @@ function AddFacilities() {
     try {
       const json=JSON.stringify(formData);
       console.log(json);
-      const response = await axios.post('https://7fbd-106-51-73-226.ngrok-free.app/addfacility', json , {
+      const response = await axios.post('https://e14b-122-186-163-190.ngrok-free.app/addfacility', json , {
         headers: {
           'Accept': '*/*',
           'Content-Type': 'application/json',
@@ -181,17 +201,17 @@ function AddFacilities() {
 
   return (
     <>
-        <div style={{width:"85%", paddingTop:"10px", paddingBottom:"10px", marginRight:"auto", marginLeft:"auto", display:"flex",alignItems:"center"}}>
+        <Navbar>
           <img src="./assets/Arrow---Left.png" width={32} height={32} onClick={()=>navigate("/")}/>
           <p style={{ fontSize:"24px"}}>
             Add Facility
           </p>
           
-      </div>
+      </Navbar>
     <div style={{
       position: "relative",
       width: "100%",
-      height: "100vh"
+      height: "90vh",
     }}>
       
       <div ref={mapContainer} style={{
@@ -203,6 +223,7 @@ function AddFacilities() {
         <FacilitySearchWrap>
           <SearchContainers>
                 <SearchContainer/>
+          </SearchContainers>
          <FacilityContainer>
             {
               !currenLocation ? (
@@ -252,13 +273,12 @@ function AddFacilities() {
               )
             }
             {
-              (confirmAddress&&currenLocation)&&
-                <CongratsPopUp/>
+                (confirmAddress&&currenLocation)&&
+                <CongratsPopUp facilityNickName={formData.facility_nickname}/>
+            
             }
           </FacilityContainer>
           
-                
-          </SearchContainers>
         </FacilitySearchWrap>
 
     </div>
