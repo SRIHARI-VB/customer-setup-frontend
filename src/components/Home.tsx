@@ -75,10 +75,10 @@ function Home(){
       {/* </LapViewHeader> */}
 
       <div style={{display:'flex', flexDirection:'row', width:"100%", height:"100%", justifyContent:"space-between", gap:"2rem"}}>
-          <div style={{backgroundColor:'white', height:'3.5rem',borderRadius:"1.25rem", width:"100%", position:"relative"}}>
-            <input type="text" placeholder='Search' style={{width:"90%", height:"3.5rem", fontSize:"1rem", outline:"none", border:"none", borderRadius:"1.25rem",paddingLeft:"24px"}} />
+          <div style={{ height:'3.5rem',borderRadius:"1.25rem", width:"100%", position:"relative"}}>
+            <input type="text" placeholder='Search' style={{width:"98%", height:"3.5rem", fontSize:"1rem", outline:"none", border:"none", borderRadius:"1.25rem",paddingLeft:"24px", boxShadow: "0px 10px 20px 6px rgba(121, 87, 0, 0.10)"}} />
           </div>
-          <div style={{backgroundColor:"white", width:"56px", height:"56px", borderRadius:"20px",display:"flex",alignItems:"center", justifyContent:"center"}}>
+          <div style={{backgroundColor:"white", width:"56px", height:"56px", borderRadius:"20px",display:"flex",alignItems:"center", justifyContent:"center",boxShadow: "0px 10px 20px 6px rgba(121, 87, 0, 0.10)"}}>
             <img width={24} height={24} src="./assets/Notification.svg" alt="notification" />
           </div>
 

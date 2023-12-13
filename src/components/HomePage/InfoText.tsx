@@ -1,10 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 const MsgStyle = styled.p`
-    font-size: 2rem;
-    padding: 1rem;
-    margin-bottom: 2rem;
-
+color: var(--fonts-n-900, #0F1532);
+font-feature-settings: 'clig' off, 'liga' off;
+font-family: Manrope;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 32px; /* 160% */
+letter-spacing: 0.25px;
+margin-top:32px;
+margin-bottom:32px;
     @media(max-width:973px){
         font-size: 14px;
         color: #0F1532

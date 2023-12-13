@@ -27,7 +27,7 @@ const InputSearchArea = styled.input`
   font-size: 1rem;
   border-radius: 1.25rem;
   height:3.5rem;
-
+  box-shadow: 0px 4px 16px 0px rgba(84, 75, 42, 0.20);
   @media (max-width: 973px){
     width: 100%;
     height:48px;

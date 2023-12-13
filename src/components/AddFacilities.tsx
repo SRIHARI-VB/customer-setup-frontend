@@ -14,8 +14,6 @@ const Navbar=styled.div`
 width:88.5%;
 padding-top:10px;
 padding-bottom:10px;
-// margin-right:auto;
-// margin-left:auto;
 display:flex;
 align-items:center;
 background-color:#fff;
@@ -46,6 +44,7 @@ const FacilityContainer=styled.div`
   padding:24px;
   width:20%;
   margin-top:24px;
+  box-shadow: 0px 10px 20px 6px rgba(121, 87, 0, 0.10);
   @media(max-width:972px){
     width:90%;
     border-radius: 20px 20px 0px 0px;
@@ -179,47 +178,40 @@ function AddFacilities() {
     try {
       const json=JSON.stringify(formData);
       console.log(json);
-      const response = await axios.post('https://e14b-122-186-163-190.ngrok-free.app/addfacility', json , {
+      const response = await axios.post('https://0432-122-186-163-190.ngrok-free.app/addfacility', json , {
         headers: {
           'Accept': '*/*',
           'Content-Type': 'application/json',
         },
-      });
-  
+      })
       if (!response.data) {
         throw new Error('Network response was not ok');
       }
-  
       console.log('Success:', response.data);
     } catch (error) {
       console.error('Error:', error);
     }
     console.log(formData);
   };
-
   const navigate=useNavigate();
-
   return (
     <>
         <Navbar>
           <img src="./assets/Arrow---Left.png" width={32} height={32} onClick={()=>navigate("/")}/>
-          <p style={{ fontSize:"24px"}}>
+          <p style={{ fontSize:"24px",marginLeft:"10px"}}>
             Add Facility
           </p>
-          
-      </Navbar>
+        </Navbar>
     <div style={{
       position: "relative",
       width: "100%",
       height: "90vh",
     }}>
-      
       <div ref={mapContainer} style={{
         position: "absolute",
         width: "100%",
         height: "100vh"
       }} />
-      
         <FacilitySearchWrap>
           <SearchContainers>
                 <SearchContainer/>
@@ -229,11 +221,9 @@ function AddFacilities() {
               !currenLocation ? (
                 <>
                   <CurrentLocation clickedLocation={clickedLocation}/>
-
                   <div onClick={()=>{setCurrentLocation(true)}} style={{width:"100%", textAlign:"center", backgroundColor:"#0B30B2", color:"white", paddingTop:"17px", paddingBottom:"17px", borderRadius:"20px"}}>
                       Use this location
-                  </div>                
-                
+                  </div>
                 </>
               ):(
                 <>
@@ -268,24 +258,17 @@ function AddFacilities() {
                         Confirm address
                     </button>  
                   </form>
-                  
                 </>
               )
             }
             {
                 (confirmAddress&&currenLocation)&&
                 <CongratsPopUp facilityNickName={formData.facility_nickname}/>
-            
             }
           </FacilityContainer>
-          
         </FacilitySearchWrap>
-
     </div>
-    
     </>
-    
   );
 }
-
 export default AddFacilities;
